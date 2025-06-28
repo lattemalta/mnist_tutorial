@@ -45,20 +45,20 @@ python3 mnist_pytorch.py
 ### SimpleNet（基本的な全結合ニューラルネットワーク）
 
 ```mermaid
-graph LR
-    A[Input<br/>28×28<br/>784 nodes] --> B[Flatten<br/>784 nodes]
-    B --> C[Linear<br/>128 nodes<br/>100,480 params]
-    C --> D[ReLU]
-    D --> E[Linear<br/>128 nodes<br/>16,512 params]
-    E --> F[ReLU]
-    F --> G[Linear<br/>10 nodes<br/>1,290 params]
-    G --> H[Output<br/>10 classes]
+flowchart LR
+    A(Input<br/>28×28<br/>784 nodes) --> B(Flatten<br/>784 nodes)
+    B --> C(Linear<br/>128 nodes<br/>100,480 params)
+    C --> D(ReLU)
+    D --> E(Linear<br/>128 nodes<br/>16,512 params)
+    E --> F(ReLU)
+    F --> G(Linear<br/>10 nodes<br/>1,290 params)
+    G --> H(Output<br/>10 classes)
     
-    classDef input fill:#E8F4FD
-    classDef linear fill:#D4E6F1
-    classDef activation fill:#F8D7DA
-    classDef flatten fill:#FFE6CC
-    classDef output fill:#D5F4E6
+    classDef input fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#FFFFFF
+    classDef linear fill:#7B68EE,stroke:#5A4FCF,stroke-width:2px,color:#FFFFFF
+    classDef activation fill:#FF6B6B,stroke:#E55555,stroke-width:2px,color:#FFFFFF
+    classDef flatten fill:#FFB74D,stroke:#F57C00,stroke-width:2px,color:#FFFFFF
+    classDef output fill:#66BB6A,stroke:#4CAF50,stroke-width:2px,color:#FFFFFF
     
     class A input
     class B flatten
@@ -72,28 +72,28 @@ graph LR
 ### CNNNet（畳み込みニューラルネットワーク）
 
 ```mermaid
-graph LR
-    A[Input<br/>1×28×28] --> B[Conv2d<br/>1→32<br/>320 params]
-    B --> C[ReLU]
-    C --> D[MaxPool2d<br/>2×2]
-    D --> E[Conv2d<br/>32→64<br/>18,496 params]
-    E --> F[ReLU]
-    F --> G[MaxPool2d<br/>2×2]
-    G --> H[Flatten<br/>3136 nodes]
-    H --> I[Linear<br/>128 nodes<br/>401,536 params]
-    I --> J[ReLU]
-    J --> K[Dropout<br/>0.5]
-    K --> L[Linear<br/>10 nodes<br/>1,290 params]
-    L --> M[Output<br/>10 classes]
+flowchart LR
+    A(Input<br/>1×28×28) --> B(Conv2d<br/>1→32<br/>320 params)
+    B --> C(ReLU)
+    C --> D(MaxPool2d<br/>2×2)
+    D --> E(Conv2d<br/>32→64<br/>18,496 params)
+    E --> F(ReLU)
+    F --> G(MaxPool2d<br/>2×2)
+    G --> H(Flatten<br/>3136 nodes)
+    H --> I(Linear<br/>128 nodes<br/>401,536 params)
+    I --> J(ReLU)
+    J --> K(Dropout<br/>0.5)
+    K --> L(Linear<br/>10 nodes<br/>1,290 params)
+    L --> M(Output<br/>10 classes)
     
-    classDef input fill:#E8F4FD
-    classDef conv fill:#B8E6B8
-    classDef pool fill:#FFE6E6
-    classDef linear fill:#D4E6F1
-    classDef activation fill:#F8D7DA
-    classDef flatten fill:#FFE6CC
-    classDef dropout fill:#F0F0F0
-    classDef output fill:#D5F4E6
+    classDef input fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#FFFFFF
+    classDef conv fill:#26A69A,stroke:#00695C,stroke-width:2px,color:#FFFFFF
+    classDef pool fill:#FF7043,stroke:#D84315,stroke-width:2px,color:#FFFFFF
+    classDef linear fill:#7B68EE,stroke:#5A4FCF,stroke-width:2px,color:#FFFFFF
+    classDef activation fill:#FF6B6B,stroke:#E55555,stroke-width:2px,color:#FFFFFF
+    classDef flatten fill:#FFB74D,stroke:#F57C00,stroke-width:2px,color:#FFFFFF
+    classDef dropout fill:#9E9E9E,stroke:#616161,stroke-width:2px,color:#FFFFFF
+    classDef output fill:#66BB6A,stroke:#4CAF50,stroke-width:2px,color:#FFFFFF
     
     class A input
     class B,E conv
