@@ -45,22 +45,68 @@ python3 auto_network_diagram.py
 
 ### SimpleNet（基本的な全結合ニューラルネットワーク）
 
-![SimpleNet Architecture](simple_net_diagram.png)
+```mermaid
+graph LR
+    A[Input<br/>28×28<br/>784 nodes] --> B[Flatten<br/>784 nodes]
+    B --> C[Linear<br/>128 nodes<br/>100,480 params]
+    C --> D[ReLU]
+    D --> E[Linear<br/>128 nodes<br/>16,512 params]
+    E --> F[ReLU]
+    F --> G[Linear<br/>10 nodes<br/>1,290 params]
+    G --> H[Output<br/>10 classes]
+    
+    classDef input fill:#E8F4FD
+    classDef linear fill:#D4E6F1
+    classDef activation fill:#F8D7DA
+    classDef flatten fill:#FFE6CC
+    classDef output fill:#D5F4E6
+    
+    class A input
+    class B flatten
+    class C,E,G linear
+    class D,F activation
+    class H output
+```
 
-- 入力層: 784ユニット（28x28画像）
-- 隠れ層: 128ユニット × 2（ReLU活性化）
-- 出力層: 10ユニット（0-9の数字分類）
 - 総パラメータ数: 118,282
 
 ### CNNNet（畳み込みニューラルネットワーク）
 
-![CNNNet Architecture](cnn_net_diagram.png)
+```mermaid
+graph LR
+    A[Input<br/>1×28×28] --> B[Conv2d<br/>1→32<br/>320 params]
+    B --> C[ReLU]
+    C --> D[MaxPool2d<br/>2×2]
+    D --> E[Conv2d<br/>32→64<br/>18,496 params]
+    E --> F[ReLU]
+    F --> G[MaxPool2d<br/>2×2]
+    G --> H[Flatten<br/>3136 nodes]
+    H --> I[Linear<br/>128 nodes<br/>401,536 params]
+    I --> J[ReLU]
+    J --> K[Dropout<br/>0.5]
+    K --> L[Linear<br/>10 nodes<br/>1,290 params]
+    L --> M[Output<br/>10 classes]
+    
+    classDef input fill:#E8F4FD
+    classDef conv fill:#B8E6B8
+    classDef pool fill:#FFE6E6
+    classDef linear fill:#D4E6F1
+    classDef activation fill:#F8D7DA
+    classDef flatten fill:#FFE6CC
+    classDef dropout fill:#F0F0F0
+    classDef output fill:#D5F4E6
+    
+    class A input
+    class B,E conv
+    class C,F,J activation
+    class D,G pool
+    class H flatten
+    class I,L linear
+    class K dropout
+    class M output
+```
 
-- Conv2d(1→32) + ReLU + MaxPool2d
-- Conv2d(32→64) + ReLU + MaxPool2d  
-- Flatten + Linear(3136→128) + ReLU + Dropout
-- Linear(128→10)
-- 総パラメータ数: 1,199,882
+- 総パラメータ数: 421,642
 
 ## ネットワーク構造可視化機能
 
