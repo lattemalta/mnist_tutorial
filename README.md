@@ -2,22 +2,26 @@
 
 PyTorchを使ったMNIST手書き数字認識のチュートリアルです。
 
+## MNISTデータセットについて
+
+MNISTは機械学習の入門によく使われる手書き数字のデータセットです。
+
+- **データ数**: 訓練用60,000枚、テスト用10,000枚
+- **画像サイズ**: 28×28ピクセル（グレースケール）
+- **クラス数**: 10クラス（0-9の数字）
+- **用途**: 手書き数字認識（画像分類タスク）
+
+このデータセットは、ディープラーニングの基本概念を学ぶのに最適で、比較的小さなモデルでも高い精度を達成できます。
+
 ## ファイル説明
 
 - `mnist_pytorch.py`: 完全版（可視化機能付き）
 - `simple_mnist.py`: 簡易版（基本的な学習と評価）
-- `auto_network_diagram.py`: ネットワーク構造自動可視化ツール
-- `visualize_network.py`: torchvizを使った詳細計算グラフ可視化
 
 ## 必要なライブラリ
 
 ```bash
-pip3 install torch torchvision matplotlib numpy torchviz graphviz
-```
-
-macOSでの追加セットアップ：
-```bash
-brew install graphviz
+pip3 install torch torchvision matplotlib numpy
 ```
 
 ## 実行方法
@@ -30,11 +34,6 @@ python3 simple_mnist.py
 ### 完全版（可視化付き）
 ```bash
 python3 mnist_pytorch.py
-```
-
-### ネットワーク構造可視化
-```bash
-python3 auto_network_diagram.py
 ```
 
 ## 結果
@@ -108,20 +107,3 @@ graph LR
 
 - 総パラメータ数: 421,642
 
-## ネットワーク構造可視化機能
-
-このプロジェクトには、任意のPyTorchモデルから自動的にネットワーク構造図を生成する汎用的な機能が含まれています：
-
-- **自動レイヤー検出**: モデルの構造を自動解析
-- **レイヤータイプ別色分け**: Conv2d、Linear、ReLUなど種類ごとに色分け
-- **パラメータ数表示**: 各レイヤーと総パラメータ数を表示
-- **複数形式対応**: PNG/SVG形式で出力
-
-使用例：
-```python
-from auto_network_diagram import create_auto_network_diagram
-
-# 任意のPyTorchモデルで使用可能
-model = YourModel()
-create_auto_network_diagram(model, input_shape=(1, 28, 28), save_name="your_model")
-```
