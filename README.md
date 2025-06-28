@@ -44,6 +44,20 @@ python3 mnist_pytorch.py
 
 簡易版で1エポック訓練後、テスト精度約90%を達成しました。
 
+### モデル性能比較
+
+5エポック訓練後の詳細な比較結果：
+
+![Model Comparison](model_comparison.png)
+
+![Final Comparison](final_comparison.png)
+
+**最終結果（5エポック後）:**
+- **SimpleNet**: 訓練精度 98.4%, テスト精度 97.9%
+- **CNNNet**: 訓練精度 98.7%, テスト精度 99.1%
+
+CNNNetの方がより高い精度を達成し、特にテスト精度で優秀な結果を示しています。
+
 ## モデル構造
 
 ### SimpleNet（基本的な全結合ニューラルネットワーク）
